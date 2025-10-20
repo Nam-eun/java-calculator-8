@@ -8,7 +8,7 @@ public class Application {
 
     public static void inputException(String input){
 
-        if(!input.matches("[0-100,:/{2}\\n]+")){
+        if(!input.matches("[/{2}\\n]+")){
 
             throw new IllegalArgumentException("잘못 입력하셨습니다.");
         }
@@ -31,6 +31,8 @@ public class Application {
         String[] arr = {};
         String[] arr_pre = {};
 
+        String num = input;
+
         if(input.indexOf("//") != 0 ){
 
             arr = input.split(",|:");
@@ -42,11 +44,13 @@ public class Application {
 
             arr_pre = input.split(Pattern.quote("\\n"));
 
-            for(int i = 0; i<arr_pre.length; i++){
+            num = arr_pre[arr_pre.length - 1];
 
-                arr = arr_pre[i].split(Pattern.quote(my_ctm));
+            if (!num.contains(my_ctm)) {
+                throw new IllegalArgumentException("커스텀한 구분자가 포함되지 않았습니다.");
+            } //추가
 
-            }
+            arr = num.split(Pattern.quote(my_ctm));
         }
 
         return Hap(arr);
@@ -59,11 +63,14 @@ public class Application {
 
         for(int i = 0; i < arr.length; i++){
 
-            hap += Integer.parseInt(arr[i]);
+            int hap_pre = Integer.parseInt(arr[i]);
 
-            if (hap < 0) {
-                throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+            if(hap_pre > hap){
+
+                throw new IllegalArgumentException("양수를 입력해 주세요.");
             }
+
+            hap += hap_pre;
 
         }
 
