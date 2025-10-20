@@ -39,6 +39,21 @@ public class Application {
             }
         }
 
-        return 0;
+        return Hap(arr);
+    }
+
+    public static int Hap(String[] arr){
+
+        int hap = 0;
+
+
+        for(int i = 0; i < arr.length; i++){
+
+            hap += Integer.parseInt(arr[i]);
+
+        }
+
+        return hap;
+
     }
 }
