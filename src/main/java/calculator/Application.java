@@ -6,14 +6,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
-    public static void inputException(String input){
-
-        if(!input.matches("[/{2}\\n]+")){
-
-            throw new IllegalArgumentException("잘못 입력하셨습니다.");
-        }
-    }
-
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -22,7 +14,6 @@ public class Application {
 
         int result = Change(input);
 
-        inputException(input);
         System.out.println("결과 : " + result);
     }
 
@@ -46,9 +37,9 @@ public class Application {
 
             num = arr_pre[arr_pre.length - 1];
 
-            if (!num.contains(my_ctm)) {
-                throw new IllegalArgumentException("커스텀한 구분자가 포함되지 않았습니다.");
-            } //추가
+            if (!num.contains(my_ctm) && num.length() > 1) {
+                throw new IllegalArgumentException("커스텀한 구분자가 없습니다.");
+            }
 
             arr = num.split(Pattern.quote(my_ctm));
         }
@@ -65,7 +56,7 @@ public class Application {
 
             int hap_pre = Integer.parseInt(arr[i]);
 
-            if(hap_pre > hap){
+            if(hap_pre < 0){
 
                 throw new IllegalArgumentException("양수를 입력해 주세요.");
             }
