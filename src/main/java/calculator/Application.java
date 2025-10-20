@@ -38,7 +38,7 @@ public class Application {
 
         }else{
 
-            String my_ctm = input.substring(input.indexOf("//")+2,input.indexOf("\n"));
+            String my_ctm = input.substring(input.indexOf("//")+2,input.indexOf("\\n"));
 
             arr_pre = input.split(Pattern.quote("\\n"));
 
