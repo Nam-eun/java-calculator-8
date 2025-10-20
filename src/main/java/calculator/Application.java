@@ -38,13 +38,14 @@ public class Application {
 
         }else{
 
-            String my_ctm = input.substring(input.indexOf("//")+2,input.indexOf("\\n"));
+            String my_ctm = input.substring(input.indexOf("//")+2,input.indexOf("\n"));
 
             arr_pre = input.split(Pattern.quote("\\n"));
 
             for(int i = 0; i<arr_pre.length; i++){
 
                 arr = arr_pre[i].split(Pattern.quote(my_ctm));
+
             }
         }
 
@@ -59,6 +60,10 @@ public class Application {
         for(int i = 0; i < arr.length; i++){
 
             hap += Integer.parseInt(arr[i]);
+
+            if (hap < 0) {
+                throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+            }
 
         }
 
