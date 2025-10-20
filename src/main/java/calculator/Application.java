@@ -6,6 +6,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
+    public static void inputException(String input){
+
+        if(!input.matches("[0-100,:/{2}\\n]+")){
+
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -14,6 +22,7 @@ public class Application {
 
         int result = Change(input);
 
+        inputException(input);
         System.out.println("결과 : " + result);
     }
 
